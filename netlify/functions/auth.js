@@ -1,7 +1,7 @@
 // OAuth handler: redirige al login de GitHub
 exports.handler = async (event) => {
   const host = event.headers['x-forwarded-host'] || event.headers.host;
-  const redirectUri = `https://${host}/.netlify/functions/callback`;
+  const redirectUri = `https://${host}/api/auth/callback`;
 
   const params = new URLSearchParams({
     client_id: process.env.OAUTH_CLIENT_ID || '',
