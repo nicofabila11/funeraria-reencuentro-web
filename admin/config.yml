@@ -7,9 +7,6 @@ backend:
   name: github
   repo: nicofabila11/funeraria-reencuentro-web
   branch: main
-  # Sveltia CMS: usar su propio OAuth proxy (no el de Netlify, que ya no funciona)
-  base_url: https://gh-auth.sveltia.dev
-  auth_endpoint: oauth/authorize
 
 # Carpeta donde se guardan las imágenes subidas desde el panel
 media_folder: "img"
