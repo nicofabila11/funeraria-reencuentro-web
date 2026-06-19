@@ -7,6 +7,9 @@ backend:
   name: github
   repo: nicofabila11/funeraria-reencuentro-web
   branch: main
+  # OAuth proxy propio (Netlify Functions) — Funeraria Reencuentro
+  base_url: https://funerariareencuentro.netlify.app
+  auth_endpoint: api/auth
 
 # Carpeta donde se guardan las imágenes subidas desde el panel
 media_folder: "img"
