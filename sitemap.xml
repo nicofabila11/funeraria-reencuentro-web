@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.reencuentrofunerarias.cl/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.reencuentrofunerarias.cl/img/hero.webp</image:loc>
+      <image:title>Carroza Jaguar Funeraria Reencuentro</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.reencuentrofunerarias.cl/img/u2-carruaje-caballos.webp</image:loc>
+      <image:title>Carruaje a caballos siglo XIX</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.reencuentrofunerarias.cl/img/salones.webp</image:loc>
+      <image:title>Salones velatorios en Talca</image:title>
+    </image:image>
+  </url>
+</urlset>

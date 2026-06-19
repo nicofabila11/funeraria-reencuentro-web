@@ -1,0 +1,21 @@
+# Archivos del SO
+.DS_Store
+Thumbs.db
+
+# Archivos de respaldo y trabajo
+_originales_chat/
+img/_old/
+nueva-*.jpg
+nueva-*.jpeg
+nueva-*.webp
+
+# Archivos viejos
+index*\(*\).html
+img:logo.png
+URLS-FOTOS.txt
+
+# Carpeta de configuración local (Claude Code, etc.)
+.claude/
+
+# ZIPs
+*.zip

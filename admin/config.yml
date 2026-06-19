@@ -1,0 +1,239 @@
+# =================================================================
+# Configuración del panel admin — Sveltia CMS / Decap CMS
+# Funeraria Reencuentro
+# =================================================================
+
+backend:
+  name: github
+  repo: nicofabila11/funeraria-reencuentro-web
+  branch: main
+
+# Carpeta donde se guardan las imágenes subidas desde el panel
+media_folder: "img"
+public_folder: "img"
+
+# Idioma de la interfaz del panel
+locale: 'es'
+
+# Mensaje de commit cuando el cliente edita
+backend_commit_messages:
+  create: 'Crear {{collection}} "{{slug}}"'
+  update: 'Editar contenido del sitio'
+  delete: 'Eliminar {{collection}} "{{slug}}"'
+  uploadMedia: 'Subir imagen "{{path}}"'
+  deleteMedia: 'Eliminar imagen "{{path}}"'
+
+# =================================================================
+# Colecciones (lo que el cliente verá en el menú lateral del panel)
+# =================================================================
+collections:
+  # ── 1. Contenido del sitio (todo en content.json) ─────────────
+  - name: "contenido"
+    label: "Contenido del sitio"
+    label_singular: "Contenido"
+    files:
+      - name: "site"
+        label: "🏛️ Sitio (general y contactos)"
+        file: "content.json"
+        format: "json"
+        fields:
+          # ─── SITE ─────────────────────────
+          - name: site
+            label: "Información general"
+            widget: object
+            fields:
+              - { name: title,         label: "Título de la página (pestaña del navegador)", widget: string }
+              - { name: description,   label: "Descripción para Google y redes",              widget: text }
+              - { name: phone_display, label: "Teléfono (formato visible: +56 9 1234 5678)",   widget: string }
+              - { name: phone_wa,      label: "Teléfono para WhatsApp (sin + ni espacios)",    widget: string, pattern: ['^[0-9]+$', 'Solo números, sin + ni espacios. Ej: 56968445574'] }
+              - { name: email,         label: "Email de contacto",                            widget: string }
+              - { name: instagram,     label: "URL de Instagram",                             widget: string }
+              - { name: facebook,      label: "URL de Facebook",                              widget: string }
+          # ─── WA MESSAGES ──────────────────
+          - name: wa_messages
+            label: "Mensajes pre-escritos de WhatsApp"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: general,   label: "Mensaje general (botón flotante y nav)",        widget: text }
+              - { name: urgencia,  label: "Mensaje de urgencia",                           widget: text }
+              - { name: prevision, label: "Mensaje de previsión",                          widget: text }
+              - { name: servicios, label: "Mensaje desde sección Servicios",               widget: text }
+              - { name: distingue, label: "Mensaje desde Lo que nos distingue",            widget: text }
+              - { name: salones,   label: "Mensaje desde sección Salones",                 widget: text }
+          # ─── HERO ─────────────────────────
+          - name: hero
+            label: "🎬 Hero (pantalla inicial)"
+            widget: object
+            fields:
+              - { name: eyebrow,        label: "Texto superior (ubicación)",                  widget: string }
+              - { name: title_pre,      label: "Título — parte normal",                       widget: string, hint: "Ej: Acompañamos cada" }
+              - { name: title_em,       label: "Título — palabra en cursiva dorada",          widget: string, hint: "Ej: despedida" }
+              - { name: title_post,     label: "Título — parte final",                        widget: string, hint: "Ej: con respeto." }
+              - { name: lead,           label: "Texto debajo del título",                     widget: text }
+              - { name: cta_primary,    label: "Botón dorado (Planificar en vida)",           widget: string }
+              - { name: cta_secondary,  label: "Botón verde WhatsApp",                        widget: string }
+              - { name: image,          label: "Foto de fondo del hero",                      widget: image }
+              - { name: image_alt,      label: "Descripción de la foto (para SEO)",           widget: string }
+          # ─── TRUST BAR ────────────────────
+          - name: trust
+            label: "📊 Barra de cifras (Atención 24h, salones, años...)"
+            widget: list
+            min: 1
+            max: 4
+            fields:
+              - { name: number, label: "Número o cifra grande", widget: string, hint: "Ej: 24h, 12, 100%" }
+              - { name: label,  label: "Texto debajo de la cifra", widget: string }
+          # ─── ACOMPAÑARTE ──────────────────
+          - name: acompanarte
+            label: "🤝 Estamos para acompañarte"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: tag,        label: "Etiqueta superior dorada", widget: string }
+              - { name: title_pre,  label: "Título — parte normal",     widget: string }
+              - { name: title_em,   label: "Título — parte en cursiva", widget: string }
+              - { name: lead,       label: "Párrafo debajo del título", widget: text }
+              - name: path_planificar
+                label: "Tarjeta izquierda — Planificar en vida"
+                widget: object
+                fields:
+                  - { name: tag,   label: "Etiqueta",  widget: string }
+                  - { name: title, label: "Título",    widget: string }
+                  - { name: desc,  label: "Descripción", widget: text }
+                  - { name: cta,   label: "Texto del enlace", widget: string }
+              - name: path_ahora
+                label: "Tarjeta derecha — Necesito ayuda ahora"
+                widget: object
+                fields:
+                  - { name: tag,   label: "Etiqueta",  widget: string }
+                  - { name: title, label: "Título",    widget: string }
+                  - { name: desc,  label: "Descripción", widget: text }
+                  - { name: cta,   label: "Texto del enlace", widget: string }
+          # ─── TESTIMONIOS ──────────────────
+          - name: testimonios
+            label: "⭐ Testimonios"
+            label_singular: "testimonio"
+            widget: list
+            hint: "Recuerda que si cambias el número de testimonios, el rating de Google se ajusta automáticamente."
+            fields:
+              - { name: stars,    label: "Estrellas (1 a 5)",       widget: number, min: 1, max: 5, default: 5 }
+              - { name: text,     label: "Texto del testimonio",     widget: text }
+              - { name: name,     label: "Nombre de quien lo dejó",  widget: string }
+              - { name: role,     label: "Rol o relación (ej: Cliente, Despedida de su madre)", widget: string }
+              - { name: initials, label: "Iniciales para el avatar (2 letras)", widget: string, pattern: ['^[A-ZÑa-zñ]{1,3}$', 'Solo 1 a 3 letras'] }
+          # ─── PREVISION ────────────────────
+          - name: prevision
+            label: "💛 Sección Previsión"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: tag,        label: "Etiqueta dorada", widget: string }
+              - { name: title_pre,  label: "Título — parte normal", widget: string }
+              - { name: title_em,   label: "Título — parte en cursiva", widget: string }
+              - { name: lead,       label: "Párrafo principal", widget: text }
+              - name: steps
+                label: "Pasos del proceso"
+                widget: list
+                fields:
+                  - { name: num,   label: "Número (ej: 01)", widget: string }
+                  - { name: title, label: "Título del paso", widget: string }
+                  - { name: desc,  label: "Descripción del paso", widget: string }
+              - { name: cta,        label: "Texto del botón", widget: string }
+              - { name: image,      label: "Foto", widget: image }
+              - { name: image_alt,  label: "Descripción de la foto (SEO)", widget: string }
+          # ─── SERVICIOS ────────────────────
+          - name: servicios
+            label: "🛠️ Servicios"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: tag,         label: "Etiqueta superior", widget: string }
+              - { name: title_pre,   label: "Título — parte normal", widget: string }
+              - { name: title_em,    label: "Título — parte en cursiva", widget: string }
+              - name: tarjetas
+                label: "Tarjetas de servicios (los íconos se mantienen del diseño)"
+                widget: list
+                fields:
+                  - { name: title, label: "Título del servicio", widget: string }
+                  - { name: desc,  label: "Descripción",           widget: text }
+              - { name: cta_text,    label: "Texto antes del botón WhatsApp", widget: string }
+              - { name: cta_button,  label: "Texto del botón WhatsApp",        widget: string }
+          # ─── UNICOS ───────────────────────
+          - name: unicos
+            label: "✨ Lo que nos distingue (Carroza, Carruaje, Carrozas)"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: tag,    label: "Etiqueta superior", widget: string }
+              - { name: title,  label: "Título principal",  widget: string }
+              - { name: lead,   label: "Párrafo debajo del título", widget: text }
+              - name: tarjetas
+                label: "Tarjetas (3 fotos verticales recomendadas)"
+                widget: list
+                min: 1
+                max: 6
+                fields:
+                  - { name: tag,       label: "Etiqueta de la tarjeta", widget: string }
+                  - { name: title,     label: "Título",                  widget: string }
+                  - { name: desc,      label: "Descripción",             widget: text }
+                  - { name: image,     label: "Foto",                    widget: image }
+                  - { name: image_alt, label: "Descripción de la foto (SEO)", widget: string }
+              - { name: cta_text,   label: "Texto antes del botón WhatsApp", widget: string }
+              - { name: cta_button, label: "Texto del botón WhatsApp",        widget: string }
+          # ─── SALONES ──────────────────────
+          - name: salones
+            label: "🏛️ Salones velatorios"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: tag,        label: "Etiqueta superior", widget: string }
+              - { name: title_pre,  label: "Título — parte normal", widget: string }
+              - { name: title_em,   label: "Título — parte en cursiva", widget: string }
+              - { name: lead,       label: "Párrafo principal", widget: text }
+              - name: features
+                label: "Características"
+                widget: list
+                fields:
+                  - { name: title, label: "Título", widget: string }
+                  - { name: desc,  label: "Descripción", widget: string }
+              - { name: cta,        label: "Texto del botón", widget: string }
+              - { name: image,      label: "Foto", widget: image }
+              - { name: image_alt,  label: "Descripción de la foto (SEO)", widget: string }
+          # ─── SUCURSALES ───────────────────
+          - name: sucursales
+            label: "📍 Sucursales"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: tag,       label: "Etiqueta superior", widget: string }
+              - { name: title_pre, label: "Título — parte normal", widget: string }
+              - { name: title_em,  label: "Título — parte en cursiva", widget: string }
+              - name: casa_matriz
+                label: "Casa Matriz"
+                widget: object
+                fields:
+                  - { name: name,    label: "Nombre",     widget: string }
+                  - { name: address, label: "Dirección",  widget: string }
+                  - { name: desc,    label: "Descripción",widget: text }
+                  - { name: maps,    label: "URL de Google Maps", widget: string }
+              - name: sucursal
+                label: "Sucursal"
+                widget: object
+                fields:
+                  - { name: name,    label: "Nombre",     widget: string }
+                  - { name: address, label: "Dirección",  widget: string }
+                  - { name: desc,    label: "Descripción",widget: text }
+                  - { name: maps,    label: "URL de Google Maps", widget: string }
+              - { name: cta_text,   label: "Texto antes del botón WhatsApp", widget: string }
+              - { name: cta_button, label: "Texto del botón WhatsApp",       widget: string }
+          # ─── FOOTER ───────────────────────
+          - name: footer
+            label: "🦅 Pie de página"
+            widget: object
+            collapsed: true
+            fields:
+              - { name: desc,      label: "Descripción de la empresa", widget: text }
+              - { name: open_24,   label: "Texto 'Abierto las 24 horas'", widget: string }
+              - { name: tagline,   label: "Frase en cursiva dorada",      widget: string }
+              - { name: copyright, label: "Línea de copyright",           widget: string }
