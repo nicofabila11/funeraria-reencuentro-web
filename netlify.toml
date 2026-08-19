@@ -2,6 +2,12 @@
   functions = "netlify/functions"
   publish = "."
 
+[build.environment]
+  # La clave web de Firebase es publica por diseno; que el escaner de
+  # secretos de Netlify no bloquee el deploy por encontrarla en el JS.
+  SECRETS_SCAN_SMART_DETECTION_OMIT_VALUES = "AIzaSyCqkAZPwWijUA6Jo2IBxLW7PJn82Gz9k-c"
+  SECRETS_SCAN_OMIT_VALUES = "AIzaSyCqkAZPwWijUA6Jo2IBxLW7PJn82Gz9k-c"
+
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
