@@ -19,3 +19,12 @@ URLS-FOTOS.txt
 
 # ZIPs
 *.zip
+
+# Material fuente del logo (no va al deploy)
+img/logo-original.png
+
+# Netlify local
+.netlify/
+
+# Herramientas internas (no se publican)
+scripts/

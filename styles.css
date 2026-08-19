@@ -274,3 +274,39 @@ footer ul a:hover{color:var(--bronze-light)}
   .btn{width:100%;justify-content:center}
   .hero-ctas{width:100%}
 }
+
+/* ============ AGRADECIMIENTOS (Firestore) ============ */
+.agr-bajada{color:var(--ink-soft);font-size:1.05rem;font-weight:300;margin-top:16px}
+.agr-estado{text-align:center;color:var(--ink-soft);font-size:.98rem;padding:30px 0 10px}
+.agr-estado .agr-wa-fallback{margin-top:22px}
+.agr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:40px}
+.agr-card{background:var(--bg-2);border:1px solid var(--line);padding:32px 30px;display:flex;flex-direction:column}
+.agr-card.agr-nueva{border-color:var(--bronze)}
+.agr-quien{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.agr-av{width:46px;height:46px;border-radius:50%;background:var(--bg-3);border:1px solid var(--bronze-deep);display:grid;place-items:center;color:var(--bronze-light);flex:none}
+.agr-av svg{width:24px;height:24px}
+.agr-quien b{font-size:.95rem;display:block;color:var(--ink)}
+.agr-quien small{font-size:.8rem;color:var(--ink-soft)}
+.agr-stars{color:var(--bronze);letter-spacing:5px;font-size:.95rem;margin-bottom:14px}
+.agr-card p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.08rem;line-height:1.55;color:var(--ink)}
+.agr-mas{text-align:center;margin-bottom:70px}
+.agr-form-bloque{max-width:640px;margin:0 auto;background:var(--bg-2);border:1px solid var(--line);padding:44px 40px}
+.agr-form-titulo{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--ink);margin-bottom:26px}
+.agr-campo{margin-bottom:22px}
+.agr-campo label,.agr-label{display:block;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:9px}
+.agr-campo input,.agr-campo textarea{width:100%;background:var(--bg-3);border:1px solid var(--line-2);color:var(--ink);font-family:'Open Sans',sans-serif;font-size:1rem;padding:13px 15px;transition:border-color .2s;resize:vertical}
+.agr-campo input:focus,.agr-campo textarea:focus{outline:none;border-color:var(--bronze)}
+.agr-campo input.con-error,.agr-campo textarea.con-error{border-color:#b0563e}
+.agr-bajo-textarea{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:7px}
+.agr-contador{font-size:.8rem;color:var(--ink-soft);margin-left:auto}
+.agr-error{display:block;font-size:.85rem;color:#d98a70;margin-top:7px}
+.agr-estrellas{display:flex;gap:6px}
+.agr-estrellas button{background:none;border:none;cursor:pointer;font-size:1.7rem;line-height:1;color:var(--line-2);padding:4px 5px;transition:color .15s,transform .15s}
+.agr-estrellas button:hover{transform:scale(1.15)}
+.agr-estrellas button.activa{color:var(--bronze)}
+.agr-confirmacion{margin-top:18px;color:var(--bronze-light);font-size:1rem}
+@media(max-width:980px){.agr-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  .agr-grid{grid-template-columns:1fr;gap:16px}
+  .agr-form-bloque{padding:32px 22px}
+}
